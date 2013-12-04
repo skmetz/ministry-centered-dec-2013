@@ -8,33 +8,34 @@ class BottlesSong
   end
 
   def verse(number)
-    "#{count(number).to_s.capitalize} #{container(number)} of #{liquid} #{location}, " +
-    "#{count(number)} #{container(number)} of #{liquid}.\n" +
-    "#{action(number)}, " +
-    "#{count(number-1)} #{container(number-1)} of #{liquid} #{location}.\n"
+    BeerVerse.new(number).to_s
+  end
+end
+
+class BeerVerse
+  attr_reader :number
+  def initialize(number)
+    @number = number
+  end
+
+  def to_s
+    "#{starting_count.to_s.capitalize} #{starting_container} of beer on the wall, " +
+    "#{starting_count} #{starting_container} of beer.\n" +
+    "#{action}, " +
+    "#{ending_count} #{ending_container} of beer on the wall.\n"
   end
 
   private
-  def action(number)
-    if number == 0
-      "Go to the store and buy some more"
-    else
-      "Take #{pronoun(number)} down and pass it around"
-    end
-  end
 
-  def count(number)
-    case number
-    when -1
-      99
-    when 0
+  def starting_count
+    if number == 0
       'no more'
     else
       number
     end
   end
 
-  def container(number)
+  def starting_container
     if number == 1
       'bottle'
     else
@@ -42,7 +43,15 @@ class BottlesSong
     end
   end
 
-  def pronoun(number)
+  def action
+    if number == 0
+      "Go to the store and buy some more"
+    else
+      "Take #{pronoun} down and pass it around"
+    end
+  end
+
+  def pronoun
     if number == 1
       'it'
     else
@@ -50,13 +59,22 @@ class BottlesSong
     end
   end
 
-
-  def liquid
-    'beer'
+  def ending_count
+    case number
+    when 0
+      99
+    when 1
+      'no more'
+    else
+      number - 1
+    end
   end
 
-  def location
-    'on the wall'
+  def ending_container
+    if number == 2
+      'bottle'
+    else
+      'bottles'
+    end
   end
-
 end
