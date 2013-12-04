@@ -349,7 +349,7 @@ The tests are in `./test/food_chain_test.rb`.
 
 ### Lyrics
 
-```ruby
+```plain
 I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.
 
