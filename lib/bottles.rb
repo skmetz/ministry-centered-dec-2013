@@ -28,7 +28,8 @@ class BeerVerse
   private
 
   def starting_count
-    if number == 0
+    case number
+    when 0
       'no more'
     else
       number
@@ -36,7 +37,8 @@ class BeerVerse
   end
 
   def starting_container
-    if number == 1
+    case number
+    when 1
       'bottle'
     else
       'bottles'
@@ -44,7 +46,8 @@ class BeerVerse
   end
 
   def action
-    if number == 0
+    case number
+    when 0
       "Go to the store and buy some more"
     else
       "Take #{pronoun} down and pass it around"
@@ -52,7 +55,8 @@ class BeerVerse
   end
 
   def pronoun
-    if number == 1
+    case number
+    when 1
       'it'
     else
       'one'
@@ -71,7 +75,8 @@ class BeerVerse
   end
 
   def ending_container
-    if number == 2
+    case number
+    when 2
       'bottle'
     else
       'bottles'
